@@ -1,11 +1,11 @@
 package com.grimey
 
-object MiscExercisesMain extends App {
+object MiscMain extends App {
   override def main(args: Array[String]): Unit = {
     val productKeyList = List("Nexus", "Kindle", "Ipad")
     val productList = List(Product("Ipad"), Product("Nexus"), Product("Kindle"))
 
-    val sortedProducts = sortProductBasedOnOtherList(productList, productKeyList)
+    val sortedProducts = Sorting.sortProductBasedOnOtherList(productList, productKeyList)
 
     println(s"Product keys = $productKeyList")
     println(s"Products = $productList")
@@ -15,18 +15,6 @@ object MiscExercisesMain extends App {
     println(makeRow(3, 1, 8))
     println(makeRow(3, 1, 9))
     println(makeRow(3, 2, 10))
-  }
-
-  private def sortProductBasedOnOtherList(productList: List[Product], productKeyList: List[String]): List[Product] = {
-    val productKeysWithIndex = productKeyList
-
-    productList.foldLeft(List[Product]()){(aggregate, product) => {
-      val keyIndex = productKeysWithIndex.indexOf(product.key)
-
-      val (previousProducts, nextProducts) = aggregate.partition((product) => productKeysWithIndex.indexOf(product.key) < keyIndex)
-
-      (previousProducts :+ product) ++ nextProducts
-    }}
   }
 
   private def makeRow(small: Int, big: Int, goal: Int): Boolean = {
