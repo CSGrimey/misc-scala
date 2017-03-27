@@ -15,6 +15,9 @@ object MiscMain extends App {
     println(makeRow(3, 1, 8))
     println(makeRow(3, 1, 9))
     println(makeRow(3, 2, 10))
+
+    val testString = "Here is a test string"
+    println(s"The reverse of string '$testString' is '${Sorting.reverse(testString)}'")
   }
 
   private def makeRow(small: Int, big: Int, goal: Int): Boolean = {
