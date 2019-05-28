@@ -7,7 +7,7 @@ import org.scalatest.{ BeforeAndAfterAll, BeforeAndAfterEach, Suite }
 trait SharedSQLContext extends BeforeAndAfterAll with BeforeAndAfterEach { self: Suite =>
   @transient private var _sc: SQLContext = _
 
-  def sqlContext: SQLContext = _sc
+  implicit def sqlContext: SQLContext = _sc
 
   var conf = new SparkConf(false)
 
